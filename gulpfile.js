@@ -10,10 +10,10 @@ var del = require('del');
 
 // Less Task
 gulp.task('less', function() {
-    return gulp.src('app/less/*.less')
+    return gulp.src('app/less/styles.less')
         .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(cleanCSS({compatibility: 'ie8'}))
+        //.pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(concat('all.css'))
         .pipe(sourcemaps.write('maps'))
         .pipe(gulp.dest('dist'));
@@ -50,9 +50,10 @@ gulp.task('clean', function(cb) {
 // Watch Task
 gulp.task('watch', function() {
     gulp.watch('app/less/*.less', gulp.series('less'));
-    gulp.watch('app/js/*.js', gulp.series('scripts'));
-    gulp.watch('app/img/*', gulp.series('images'));
+    //gulp.watch('app/js/*.js', gulp.series('scripts'));
+    //gulp.watch('app/img/*', gulp.series('images'));
 });
 
 // Default Task
-gulp.task('default', gulp.series('clean', 'less', 'jquery', 'scripts', 'images', 'watch'));
+//gulp.task('default', gulp.series('clean', 'less', 'jquery', 'scripts', 'images', 'watch'));
+gulp.task('default', gulp.series('clean', 'less', 'watch'));
